@@ -1,93 +1,40 @@
-# Do you know me
+# Do You Know Me Quiz
 
-> Cli quiz about me hosted on replit and written using replit.
-> 
-> Tech stack => {nodejs}
-> 
-> [Click here to play the quiz](https://replit.com/@shmbajaj/doyouknowme#index.js?embed=1&output=1)
-> 
-> [Click here to view the code on replit](https://replit.com/@shmbajaj/doyouknowme#index.js)
+## List of Contents
+- Descritpion
+- Input
+- Output
+- Processing
+- Screenshots
+- Link
 
-<details>
+> **Description:** Quiz app asks questions related to the author for each correct answer user gets a point whereas for each incorrect answer user looses a point. First user has to enter his or her name then user is informed with rules, then after quiz is over user is informed with points scored.
 
-  <summary>Click here to expand code</summary>
-  
-  ```javascript
-  
-const readlinesync = require('readline-sync');
-const questionUser = readlinesync.question;
-const logger = console.log;
+<br>
 
-const closestFriend = {
-  userName:"Amit Thakur",
-  score:3
-}
+> **Input:** A user has to enter his or her name, then user is informed with rules. For each question user has to write an answer. If an empty input is entered either for name or answer it will be taken as input. After each question user is updated whether answer is correct or incorrect with correct answer.
 
-let data = {
-  "In which city shubham bajaj born? ":"yamunanagar",
-  "Shubham's favourite content creator? ":"none",
-  "Shubham's birthdate(DD) ? ":"5",
-  "In which city shubham is currently living? ":"bangalore",
-  "What he want to be in life? ": "dontknow" 
-};
+<br>
 
-function putSeparator(){
-  logger("-----------------------");
-  logger("\n");
-}
+> **Output:** For each correct answer user is informed with message `you scored point +1` and whereas for each incorrect answer user is informed with message `you scored point -1` and with `correct answer is: ans`.  At end of quiz user get to know points scored and thanks for playing quiz as  `Hey user_name, Thanks for playing, You scored: points`.
 
-function getUserName(){
-  let score = 0;
-  let userName = questionUser('May I have your name? ');
-  putSeparator();
-  return {userName,score};
-}
+<br>
 
-function updateUser(message,answer,score){
-    logger(message,answer);
-    logger("Your score is",score);
-    putSeparator();
-}
+> **Processing:**
+- First user has to enter his or her name.
+- After entering name, user is welcomed and told about quiz rules.
+- Then user has to write answer for the asked question.
+- For each correct or incorrect answer user is informed with appropriate message.
+- When user has played quiz till the end then user is informed with score and thanks message.
 
-function askQuestion(question,defaultAnswer,score){
-    let userAnswer = questionUser(question).toLowerCase();
-    if(userAnswer === defaultAnswer){
-        updateUser("You'r right","",++score);
-    }else{
-        updateUser("You'r wrong correct answer is",defaultAnswer,--score);
-    }
-    return score;
-}
+<br>
 
-function playQuiz(score){
-  let questions = Object.keys(data);
-  questions.forEach( ques => {
-          score = askQuestion(ques,data[ques],score);
-  });
-  return score;
-}
+> **Screenshots:**
+![Do You Know me Quiz user entered his or her name then informed with rules](https://github.com/shmbajaj/doyouknowme-quiz/blob/main/screenshots/io_name.png?raw=true)
+![Do You Know me Quiz user socred a plus one point](https://github.com/shmbajaj/doyouknowme-quiz/blob/main/screenshots/io_correct.png?raw=true)
+![Do You Know me Quiz user scored a minus one point](https://github.com/shmbajaj/doyouknowme-quiz/blob/main/screenshots/io_incorrect.png?raw=true)
+![Do You Know me Quiz user informed with scored points](https://github.com/shmbajaj/doyouknowme-quiz/blob/main/screenshots/io_score.png?raw=true)
 
- function quizRules(user){
-   logger("Hi","@"+user.userName);
-   logger("Welcome to Do you know me Quiz by @shubhambajaj");
-   logger("Here are total",Object.keys(data).length,"questions you have to answer each questions and at the end of quiz you will get to know, How much you know ShubhamBajaj.");
-   logger("Get Set Ready!!");
-   putSeparator();
-}
+<br>
 
-function displayScore(user){
-  logger("Hey",user.userName);
-  logger("Thanks for playing Do you know me Quiz by and for @shubhambajaj");
-  if(user.score >= closestFriend.score){
-      logger("You are closest friend of shubhambajaj","share your score with him to update the closest friend in his records.");
-  }
-    logger("You scored",user.score);
-}
-
-let user = getUserName();
-quizRules(user);
-user.score = playQuiz(user.score);
-displayScore(user);
-  ```
-
-</details>
+> **Link:** [Do You Know Me Quiz](https://replit.com/@shmbajaj/doyouknowme#index.js)
